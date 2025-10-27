@@ -32,8 +32,6 @@ async function registerAllIpc()
 
 await registerAllIpc();
 
-// test
-
 function createWindow()
 {
     global.share.mainWindow = new BrowserWindow({
@@ -51,7 +49,7 @@ function createWindow()
         }
     });
 
-    global.share.mainWindow.webContents.session.enableNetworkEmulation({ offline: true })
+    //global.share.mainWindow.webContents.session.enableNetworkEmulation({ offline: true })
 
     const guiURL = process.env.ELECTRON_START_URL || url.format({
         pathname: path.join(__dirname, '../gui/index.html'),
@@ -59,7 +57,10 @@ function createWindow()
         slashes: true
     });
 
-    global.share.mainWindow.loadURL(guiURL);
+    const isDev = process.env.RINO_DEV === "1";
+    const devURL = process.env.RINO_URL || "http://localhost:3000";
+
+    global.share.mainWindow.loadURL(isDev ? devURL : guiURL);
     global.share.mainWindow.webContents.openDevTools();
     global.share.mainWindow.setMenu(null);
 
@@ -73,10 +74,10 @@ function createWindow()
         }
     });
 
-    global.share.mainWindow.webContents.on('new-window', function (e, theUrl)
+    global.share.mainWindow.webContents.setWindowOpenHandler(({ url: theUrl }) =>
     {
-        e.preventDefault();
         shell.openExternal(theUrl);
+        return { action: 'deny' };
     });
 }
 

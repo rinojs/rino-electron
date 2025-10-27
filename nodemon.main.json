@@ -1,6 +1,0 @@
-{
-  "watch": ["main"],
-  "ext": "js, mjs, cjs, ts, json",
-  "exec": "node electronDevHelper.js",
-  "delay": "1000"
-}

@@ -1,6 +1,0 @@
-{
-  "watch": ["rino"],
-  "ext": "js, mjs, cjs, ts, json, html, css, scss, sass, less, styl, md, xml, yml, yaml, png, jpg, jpeg, gif, avif, svg, webp, ico, bmp, mp3, wav, ogg, mp4, webm, woff, woff2, ttf, otf, eot",
-  "exec": "node ./rino/generate.js",
-  "delay": "1000"
-}

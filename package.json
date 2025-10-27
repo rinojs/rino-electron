@@ -1,16 +1,20 @@
 {
   "name": "rino-electron",
   "version": "0.0.1",
+  "description": "App",
   "private": true,
   "main": "./main/app.js",
   "type": "module",
   "scripts": {
     "rino:dev": "node ./rino/dev.js",
     "rino:generate": "node ./rino/generate.js",
-    "rino:nodemon": "nodemon --config nodemon.rino.json",
-    "main:dev": "start electron ./main/app.js",
-    "main:nodemon": "nodemon --config nodemon.main.json",
-    "dev": "concurrently \"npm run rino:nodemon\" \"npm run main:nodemon\""
+    "main:dev": "start electron .",
+    "dev": "node devHelper.js",
+    "dist": "npm run rino:generate && electron-builder",
+    "dist:pack": "npm run rino:generate && electron-builder --dir",
+    "dist:win": "npm run rino:generate && electron-builder --win",
+    "dist:linux": "npm run rino:generate && electron-builder --linux",
+    "dist:mac": "npm run rino:generate && electron-builder --mac"
   },
   "build": {
     "appId": "com.yourcompany.yourapp",
@@ -20,7 +24,7 @@
     "files": [
       "!dist",
       "!rino",
-      "!electronDevHelper.js"
+      "!devHelper.js"
     ],
     "directories": {
       "buildResources": "./assets/",
@@ -30,9 +34,6 @@
       "target": [
         "zip",
         "portable"
-      ],
-      "arch": [
-        "x64"
       ],
       "icon": "./assets/icons/icon.png"
     },
@@ -57,7 +58,7 @@
       ],
       "icon": "./assets/icons/icon.png",
       "category": "Utility",
-      "artifactName": "${productName}-${version}-${arch}.${ext}"
+      "artifactName": "${productName}-${version}.${ext}"
     },
     "deb": {
       "maintainer": "you@example.com",
@@ -65,14 +66,16 @@
       "description": "${productName} is a cross-platform application built with love."
     }
   },
+  "author": "YourCompany",
+  "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "rinojs": "^2.17.0"
+    "rinojs": "^2.17.2"
   },
   "devDependencies": {
+    "chokidar": "^4.0.3",
     "concurrently": "^9.2.1",
     "electron": "^38.4.0",
     "electron-builder": "^26.0.12",
-    "nodemon": "^3.1.10",
     "typescript": "^5.9.3"
   }
 }
