@@ -1,0 +1,78 @@
+{
+  "name": "rino-electron",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./main/app.js",
+  "type": "module",
+  "scripts": {
+    "rino:dev": "node ./rino/dev.js",
+    "rino:generate": "node ./rino/generate.js",
+    "rino:nodemon": "nodemon --config nodemon.rino.json",
+    "main:dev": "start electron ./main/app.js",
+    "main:nodemon": "nodemon --config nodemon.main.json",
+    "dev": "concurrently \"npm run rino:nodemon\" \"npm run main:nodemon\""
+  },
+  "build": {
+    "appId": "com.yourcompany.yourapp",
+    "productName": "YourApp",
+    "compression": "normal",
+    "asar": true,
+    "files": [
+      "!dist",
+      "!rino",
+      "!electronDevHelper.js"
+    ],
+    "directories": {
+      "buildResources": "./assets/",
+      "output": "./dist/"
+    },
+    "win": {
+      "target": [
+        "zip",
+        "portable"
+      ],
+      "arch": [
+        "x64"
+      ],
+      "icon": "./assets/icons/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "${productName}"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}.${ext}",
+      "useZip": true
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "snap"
+      ],
+      "icon": "./assets/icons/icon.png",
+      "category": "Utility",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "deb": {
+      "maintainer": "you@example.com",
+      "synopsis": "A simple cross-platform desktop app",
+      "description": "${productName} is a cross-platform application built with love."
+    }
+  },
+  "dependencies": {
+    "rinojs": "^2.17.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^38.4.0",
+    "electron-builder": "^26.0.12",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.3"
+  }
+}
