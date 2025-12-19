@@ -36,36 +36,36 @@
       <a href="https://rinojs.org/" target="_blank">Rino Website!</a>
       <a href="https://github.com/rinojs/rinojs" target="_blank">Github</a>
       <component
-        @path="button"
-        @tag="button"
+        rino-path="button"
+        rino-tag="button"
         type="button"
         onclick="window.api.someFunction()"
       />
       <component
-        @path="button"
-        @tag="button"
+        rino-path="button"
+        rino-tag="button"
         type="button"
         onclick="hello.hello()"
       />
       <component
-        @path="button"
-        @tag="button"
+        rino-path="button"
+        rino-tag="button"
         type="button"
         onclick="helloTS.hello()"
       />
-      <script @type="md" type="text/markdown">
+      <script rino-type="md" type="text/markdown">
         ## Hello world!
 
         This is written in Markdown!
 
         - This is written in Markdown!
       </script>
-      <script @type="ts" type="text/typescript">
+      <script rino-type="ts" type="text/typescript">
         // This is for templating html content
         let world: string = "Hello world! from typescript!";
         console.log(world);
       </script>
-      <script @type="js" type="text/javascript">
+      <script rino-type="js" type="text/javascript">
         // This is for templating html content
         console.log("Hello world! from javascript!");
       </script>

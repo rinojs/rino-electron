@@ -69,7 +69,7 @@
   "author": "YourCompany",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "rinojs": "^2.17.2"
+    "rinojs": "^2.19.0"
   },
   "devDependencies": {
     "chokidar": "^4.0.3",
