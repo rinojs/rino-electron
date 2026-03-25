@@ -68,14 +68,14 @@
   },
   "author": "YourCompany",
   "license": "SEE LICENSE IN LICENSE",
-  "dependencies": {
-    "rinojs": "^2.19.0"
-  },
   "devDependencies": {
-    "chokidar": "^4.0.3",
+    "chokidar": "^5.0.0",
     "concurrently": "^9.2.1",
-    "electron": "^38.4.0",
-    "electron-builder": "^26.0.12",
-    "typescript": "^5.9.3"
+    "electron": "^41.0.3",
+    "electron-builder": "^26.8.1",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "rinojs": "^2.22.0"
   }
 }
