@@ -51,8 +51,8 @@ function createWindow()
 
     //global.share.mainWindow.webContents.session.enableNetworkEmulation({ offline: true })
 
-    const guiURL = process.env.ELECTRON_START_URL || url.format({
-        pathname: path.join(__dirname, '../gui/index.html'),
+    const appURL = process.env.ELECTRON_START_URL || url.format({
+        pathname: path.join(__dirname, '../www/index.html'),
         protocol: 'file:',
         slashes: true
     });
@@ -60,7 +60,7 @@ function createWindow()
     const isDev = process.env.RINO_DEV === "1";
     const devURL = process.env.RINO_URL || "http://localhost:3000";
 
-    global.share.mainWindow.loadURL(isDev ? devURL : guiURL);
+    global.share.mainWindow.loadURL(isDev ? devURL : appURL);
     global.share.mainWindow.webContents.openDevTools();
     global.share.mainWindow.setMenu(null);
 

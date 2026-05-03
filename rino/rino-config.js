@@ -1,5 +1,5 @@
 export default {
-    dist: "../gui/",
+    dist: "../www/",
     port: 3000,
     site: {
         url: "https://example.com"
